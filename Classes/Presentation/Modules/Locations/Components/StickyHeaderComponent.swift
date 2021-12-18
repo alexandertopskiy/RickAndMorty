@@ -9,10 +9,24 @@ import SwiftUI
 struct StickyHeaderComponent: View {
     let navigationImage: String
     let navigationTitle: String
-    let heightForHide = Layout.scaleFactorH * 170
     var isFilterHidden: Bool = false
     @Binding var searchRequest: String?
     @Binding var isFilterButtonActive: Bool
+    let store: Store<EpisodesState, EpisodesAction>?
+
+    var heightForHide: CGFloat {
+        if store != nil {
+            return Layout.scaleFactorH * 238
+        }
+        return Layout.scaleFactorH * 178
+    }
+
+    var heightForShow: CGFloat {
+        if store != nil {
+            return Layout.scaleFactorH * 400
+        }
+        return Layout.scaleFactorH * 324
+    }
 
     var body: some View {
         GeometryReader { geo in
@@ -33,19 +47,23 @@ struct StickyHeaderComponent: View {
                     if self.isFilterHidden {
                         SearchAndFilter(searchRequest: $searchRequest, isFilterButtonActive: $isFilterButtonActive)
                     } else {
-                        VStack {
+                        VStack(spacing: 0) {
                             SearchBar(searchRequest: $searchRequest)
                                 .frame(height: Layout.scaleFactorW * 52)
                                 .padding(.horizontal, Layout.scaleFactorW * 24)
                                 .padding(.top, Layout.scaleFactorH * 16)
                                 .padding(.bottom, Layout.scaleFactorH * 8)
+                            if let store = store {
+                                AppSegmentedControl(store: store)
+                                    .padding(.vertical, Layout.scaleFactorH * 16)
+                            }
                         }
                     }
                 }
             }
             .offset(y: geo.getOffsetForHeader)
         }
-        .frame(height: Layout.scaleFactorH * 324)
+        .frame(height: heightForShow)
         .zIndex(1)
     }
 }

@@ -18,11 +18,13 @@ struct CharactersScrollView: View {
                         CharacterCard(сharacter: character)
                     }
                     if viewStore.filterParameters.page < viewStore.filterParameters.totalPages {
-                        ProgressView()
-                            .frame(width: Layout.scaleFactorW * 100, height: Layout.scaleFactorW * 100)
+                        AnimationViewComponent()
+                            .frame(width: Layout.scaleFactorW * 50, height: Layout.scaleFactorW * 50)
                             .padding(.leading, Layout.scaleFactorW * 163)
                             .onAppear {
-                                viewStore.send(.fetchNextPage)
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                                    viewStore.send(.fetchNextPage)
+                                }
                             }
                     }
                 }

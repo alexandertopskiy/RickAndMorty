@@ -12,6 +12,7 @@ let charactersReducer: Reducer<CharactersState, CharactersAction, CharactersEnvi
             if state.data.isEmpty {
                 return environment.apiService.fetchCharacters(withParameters: state.filterParameters)
                     .receive(on: environment.mainQueue)
+                    .delay(for: .seconds(1), scheduler: environment.mainQueue)
                     .catchToEffect()
                     .map(CharactersAction.dataLoaded)
             }

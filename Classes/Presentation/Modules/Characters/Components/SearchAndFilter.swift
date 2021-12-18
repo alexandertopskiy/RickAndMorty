@@ -16,7 +16,6 @@ struct SearchAndFilter: View {
         }
         .frame(height: Layout.scaleFactorW * 52)
         .padding(.horizontal, Layout.scaleFactorW * 24)
-        .padding(.top, Layout.scaleFactorH * 16)
-        .padding(.bottom, Layout.scaleFactorH * 8)
+        .padding(.vertical, Layout.scaleFactorH * 16)
     }
 }

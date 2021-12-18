@@ -29,11 +29,9 @@ struct EpisodesScreen: View {
                                 navigationTitle: viewStore.state.navigationTitle,
                                 isFilterHidden: false,
                                 searchRequest: searchRequest,
-                                isFilterButtonActive: $isFilterButtonActive
+                                isFilterButtonActive: $isFilterButtonActive,
+                                store: store
                             )
-                            AppSegmentedControl(store: store)
-                                .padding(.top, Layout.scaleFactorH * 16)
-                                .padding(.bottom, Layout.scaleFactorH * 8)
                             if let logInfo = viewStore.logInfo {
                                 Text("\(logInfo.readableInfo)")
                                     .font(Font.appFontSemibold(ofSize: Layout.scaleFactorW * 17))
@@ -42,7 +40,8 @@ struct EpisodesScreen: View {
                                     .padding(.top, Layout.scaleFactorH * 150)
                             } else {
                                 if viewStore.data.isEmpty {
-                                    ProgressView()
+                                    AnimationViewComponent()
+                                        .frame(width: Layout.scaleFactorW * 50, height: Layout.scaleFactorW * 50)
                                         .padding(.top, Layout.scaleFactorH * 150)
                                 } else {
                                     EpisodesScrollView(store: store)

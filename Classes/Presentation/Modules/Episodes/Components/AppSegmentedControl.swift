@@ -16,9 +16,7 @@ struct AppSegmentedControl: View {
                     ForEach(viewStore.seasonsTitles.indices, id: \.self) { index in
                         Button(
                             action: {
-                                withAnimation {
-                                    viewStore.send(.seasonSelected(index))
-                                }
+                                viewStore.send(.seasonSelected(index))
                             },
                             label: {
                                 Text(viewStore.seasonsTitles[index])

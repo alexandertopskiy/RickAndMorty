@@ -45,7 +45,8 @@ struct CharactersScreen: View {
                                 navigationTitle: viewStore.state.navigationTitle,
                                 isFilterHidden: true,
                                 searchRequest: searchRequest,
-                                isFilterButtonActive: isFilterButtonActive
+                                isFilterButtonActive: isFilterButtonActive,
+                                store: nil
                             )
                             if let logInfo = viewStore.logInfo {
                                 Text("\(logInfo.readableInfo)")
@@ -55,7 +56,8 @@ struct CharactersScreen: View {
                                     .padding(.top, Layout.scaleFactorH * 150)
                             } else {
                                 if viewStore.data.isEmpty {
-                                    ProgressView()
+                                    AnimationViewComponent()
+                                        .frame(width: Layout.scaleFactorW * 50, height: Layout.scaleFactorW * 50)
                                         .padding(.top, Layout.scaleFactorH * 150)
                                 } else {
                                     CharactersScrollView(store: store)

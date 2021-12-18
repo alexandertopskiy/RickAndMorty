@@ -45,7 +45,8 @@ struct LocationsScreen: View {
                                 navigationTitle: viewStore.state.navigationTitle,
                                 isFilterHidden: true,
                                 searchRequest: searchRequest,
-                                isFilterButtonActive: isFilterButtonActive
+                                isFilterButtonActive: isFilterButtonActive,
+                                store: nil
                             )
                             if let logInfo = viewStore.logInfo {
                                 Text("\(logInfo.readableInfo)")
@@ -55,10 +56,11 @@ struct LocationsScreen: View {
                                     .padding(.top, Layout.scaleFactorH * 150)
                             } else {
                                 if viewStore.data.isEmpty {
-                                    ProgressView()
+                                    AnimationViewComponent()
+                                        .frame(width: Layout.scaleFactorW * 50, height: Layout.scaleFactorW * 50)
                                         .padding(.top, Layout.scaleFactorH * 150)
                                 } else {
-                                    LazyVStack(spacing: 16) {
+                                    LazyVStack(spacing: Layout.scaleFactorW * 16) {
                                         ForEach(viewStore.state.data, id: \.id) { card in
                                             NavigationLink {
                                                 DetailsHelloComponent()
@@ -67,10 +69,12 @@ struct LocationsScreen: View {
                                             }
                                         }
                                         if viewStore.filterParameters.page < viewStore.filterParameters.totalPages {
-                                            ProgressView()
-                                                .frame(width: Layout.scaleFactorW * 100, height: Layout.scaleFactorW * 100)
+                                            AnimationViewComponent()
+                                                .frame(width: Layout.scaleFactorW * 50, height: Layout.scaleFactorW * 50)
                                                 .onAppear {
-                                                    viewStore.send(.fetchNextPage)
+                                                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                                                        viewStore.send(.fetchNextPage)
+                                                    }
                                                 }
                                         }
                                     }

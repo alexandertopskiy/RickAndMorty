@@ -14,6 +14,10 @@ struct AppImageView: View {
         ZStack {
             Rectangle()
                 .fill(Color.gray)
+            if image.isLoading {
+                AnimationViewComponent()
+                    .frame(width: Layout.scaleFactorW * 50, height: Layout.scaleFactorW * 50)
+            }
             image.view?
                 .resizable()
                 .clipped()

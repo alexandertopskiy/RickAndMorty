@@ -15,6 +15,7 @@ let episodesReducer = Reducer<EpisodesState, EpisodesAction, EpisodesEnvironment
             }
             return environment.apiService.fetchEpisodes(withParameters: state.filterParameters)
                 .receive(on: environment.mainQueue)
+                .delay(for: .seconds(1), scheduler: environment.mainQueue)
                 .catchToEffect()
                 .map(EpisodesAction.dataLoaded)
         }

@@ -32,11 +32,13 @@ struct EpisodesScrollView: View {
                         }
                     }
                 }
-                if viewStore.filterParameters.page < viewStore.filterParameters.totalPages && !viewStore.data.isEmpty {
-                    ProgressView()
-                        .frame(width: Layout.scaleFactorW * 100, height: Layout.scaleFactorW * 100)
+                if viewStore.filterParameters.page < viewStore.filterParameters.totalPages {
+                    AnimationViewComponent()
+                        .frame(width: Layout.scaleFactorW * 50, height: Layout.scaleFactorW * 50)
                         .onAppear {
-                            viewStore.send(.fetchNextPage)
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                                viewStore.send(.fetchNextPage)
+                            }
                         }
                 }
             }
