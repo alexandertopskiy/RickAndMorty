@@ -60,6 +60,7 @@ let charactersReducer: Reducer<CharactersState, CharactersAction, CharactersEnvi
             state.data.removeAll()
             return environment.apiService.fetchCharacters(withParameters: state.filterParameters)
                 .receive(on: environment.mainQueue)
+                .delay(for: .seconds(1), scheduler: environment.mainQueue)
                 .catchToEffect()
                 .map(CharactersAction.dataLoaded)
         case .filter(let action):

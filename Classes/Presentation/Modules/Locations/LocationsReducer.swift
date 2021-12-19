@@ -60,6 +60,7 @@ let locationsReducer: Reducer<LocationsState, LocationsAction, LocationsEnvironm
             state.data.removeAll()
             return environment.apiService.fetchLocations(withParameters: state.filterParameters)
                 .receive(on: environment.mainQueue)
+                .delay(for: .seconds(1), scheduler: environment.mainQueue)
                 .catchToEffect()
                 .map(LocationsAction.dataLoaded)
         case .filter(let action):
