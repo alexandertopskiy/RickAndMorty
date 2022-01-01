@@ -12,4 +12,5 @@ enum CharactersAction: Equatable {
     case filterButtonTapped
     case filter(FilterAction)
     case filterSettingsChanged
+    case details(CharacterDetailsAction)
 }

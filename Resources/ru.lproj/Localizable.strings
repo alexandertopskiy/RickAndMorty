@@ -1,0 +1,50 @@
+//
+//  Created by Anton Dityativ on 15/11/2021
+//  Copyright © 2021 Ronas IT. All rights reserved.
+//
+
+// Characters
+"characters.title" = "Персонажи";
+
+// Locations
+"locations.title" = "Локации";
+
+// Episodes
+"episodes.title" = "Эпизоды";
+"episodes.seasonCode.season" = "Сезон";
+"episodes.seasonCode.episode" = "Эпизод";
+"episodes.seasonCode.unknown" = "Номер эпизода неизвестен";
+
+// Filter
+"filters.title" = "Фильтры";
+"filters.action.reset_all" = "Сбросить все";
+"filters.action.apply" = "Применить";
+"filters.all" = "Все";
+"filters.characters.status" = "Статус";
+"filters.characters.species" = "Вид";
+"filters.characters.type" = "Тип";
+"filters.characters.gender" = "Гендер";
+"filters.locations.type" = "Тип";
+"filters.locations.dimension" = "Измерение";
+
+// Details
+"details.character.origin" = "Место происхождения";
+"details.info.title" = "Информация";
+"details.info.none" = "Нет";
+"details.info.species" = "Вид:";
+"details.info.type" = "Тип:";
+"details.info.gender" = "Гендер:";
+"details.info.dimension" = "Измерение:";
+"details.info.episode" = "Эпизод:";
+"details.info.season" = "Сезон:";
+"details.info.air_date" = "Дата выхода:";
+"details.character.scroll_title" = "Эпизоды";
+"details.location.scroll_title" = "Жители";
+"details.episode.scroll_title" = "Персонажи";
+
+// Placeholder
+"placeholder.search" = "Поиск";
+
+//Log Info
+"log.error" = "Ошибка! Пожалуйста, проверьте соединение с Интернетом!";
+"log.notFound" = "Не найдено";

@@ -54,6 +54,8 @@ struct CharactersScreen: View {
                                     .foregroundColor(.white)
                                     .kerning(-0.41)
                                     .padding(.top, Layout.scaleFactorH * 150)
+                                    .padding(.horizontal, Layout.scaleFactorW * 24)
+                                    .multilineTextAlignment(.center)
                             } else {
                                 if viewStore.data.isEmpty {
                                     AnimationViewComponent()

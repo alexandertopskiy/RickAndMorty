@@ -7,7 +7,6 @@ import SwiftUI
 import Lottie
 
 struct AnimationViewComponent: UIViewRepresentable, Equatable {
-    var isPlaying: Bool = true
     let view = UIView(frame: .zero)
     let animationView = AnimationView()
 

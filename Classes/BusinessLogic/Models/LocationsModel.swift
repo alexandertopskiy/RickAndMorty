@@ -11,9 +11,34 @@ struct Location: Codable, Equatable {
     let name: String
     let type: LocationType
     let dimension: LocationDimension
-    let residents: [String]
+    let residentURLs: [URL]
     let url: String
     let created: String
+    var residents: [Character] = []
+
+    var residentsIDs: [Int] {
+        return residentURLs.compactMap { Int($0.lastPathComponent) }
+    }
+
+    init() {
+        id = 0
+        name = ""
+        type = .unknown
+        dimension = .unknown
+        residentURLs = []
+        url = ""
+        created = ""
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case id
+        case name
+        case type
+        case dimension
+        case residentURLs = "residents"
+        case url
+        case created
+    }
 
     enum LocationType: String, Codable, Equatable, CaseIterable {
         case acidPlant = "Acid Plant"
@@ -131,15 +156,3 @@ struct Location: Codable, Equatable {
         }
     }
 }
-
-let locationCardModel = Location(
-    id: 1,
-    name: "Earth (Replacement Dimension)",
-    type: .cluster,
-    dimension: Location.LocationDimension.c137,
-    residents: ["1"],
-    url: "1",
-    created: "1"
-)
-
-let listLocations: [Location] = Array(repeating: locationCardModel, count: 20)

@@ -13,6 +13,7 @@ struct AppSegmentedControl: View {
         WithViewStore(self.store) { viewStore in
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: Layout.scaleFactorW * 16) {
+                    Spacer().frame(width: Layout.scaleFactorW * 8)
                     ForEach(viewStore.seasonsTitles.indices, id: \.self) { index in
                         Button(
                             action: {
@@ -40,7 +41,6 @@ struct AppSegmentedControl: View {
                     Spacer().frame(width: Layout.scaleFactorW * 8)
                 }
             }
-            .padding(.leading, Layout.scaleFactorW * 24)
         }
     }
 }

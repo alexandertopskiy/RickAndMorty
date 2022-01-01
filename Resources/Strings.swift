@@ -16,6 +16,43 @@ internal enum L10n {
     internal static let title = L10n.tr("Localizable", "characters.title")
   }
 
+  internal enum Details {
+    internal enum Character {
+      /// Origin
+      internal static let origin = L10n.tr("Localizable", "details.character.origin")
+      /// Episodes
+      internal static let scrollTitle = L10n.tr("Localizable", "details.character.scroll_title")
+    }
+    internal enum Episode {
+      /// Characters
+      internal static let scrollTitle = L10n.tr("Localizable", "details.episode.scroll_title")
+    }
+    internal enum Info {
+      /// Air Date:
+      internal static let airDate = L10n.tr("Localizable", "details.info.air_date")
+      /// Dimension:
+      internal static let dimension = L10n.tr("Localizable", "details.info.dimension")
+      /// Episode:
+      internal static let episode = L10n.tr("Localizable", "details.info.episode")
+      /// Gender:
+      internal static let gender = L10n.tr("Localizable", "details.info.gender")
+      /// None
+      internal static let `none` = L10n.tr("Localizable", "details.info.none")
+      /// Season:
+      internal static let season = L10n.tr("Localizable", "details.info.season")
+      /// Species:
+      internal static let species = L10n.tr("Localizable", "details.info.species")
+      /// Info
+      internal static let title = L10n.tr("Localizable", "details.info.title")
+      /// Type:
+      internal static let type = L10n.tr("Localizable", "details.info.type")
+    }
+    internal enum Location {
+      /// Residents
+      internal static let scrollTitle = L10n.tr("Localizable", "details.location.scroll_title")
+    }
+  }
+
   internal enum Episodes {
     /// Episodes
     internal static let title = L10n.tr("Localizable", "episodes.title")

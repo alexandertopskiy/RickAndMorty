@@ -37,6 +37,7 @@ let locationsReducer: Reducer<LocationsState, LocationsAction, LocationsEnvironm
                 state.logInfo = error
             }
         case .locationCardSelected(let location):
+            state.details.location = location
             print("location \(location.name) selected")
         case .searchInputChanged(let request):
             print("searching location: \(request ?? "nil")")
@@ -75,11 +76,19 @@ let locationsReducer: Reducer<LocationsState, LocationsAction, LocationsEnvironm
             state.filterParameters.page = 1
             state.filterParameters.totalPages = 0
             state.filter.filterParameters = state.filterParameters
+        case .details:
+            break
         }
         return .none
     },
 
     filterReducer.pullback(state: \.filter, action: /LocationsAction.filter) { _ in
         FilterEnvironment()
+    },
+    locationDetailsReducer.pullback(state: \.details, action: /LocationsAction.details) { _ in
+        LocationDetailsEnvironment(
+            apiService: ServiceContainer().charactersService,
+            mainQueue: DispatchQueue.main.eraseToAnyScheduler()
+        )
     }
 )

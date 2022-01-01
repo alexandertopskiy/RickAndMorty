@@ -10,4 +10,5 @@ enum EpisodesAction: Equatable {
     case dataLoaded(Result<GeneralRequest<Episode>, NetworkError>)
     case searchInputChanged(String?)
     case seasonSelected(Int)
+    case details(EpisodeDetailsAction)
 }

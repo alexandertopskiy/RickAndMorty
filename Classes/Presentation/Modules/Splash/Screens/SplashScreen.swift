@@ -37,7 +37,7 @@ struct SplashScreen: View {
                         .edgesIgnoringSafeArea(.all)
                     Spacer()
                         .frame(height: Layout.scaleFactorH * 133)
-                    AnimationViewComponent(isPlaying: true)
+                    AnimationViewComponent()
                         .frame(width: Layout.scaleFactorW * 72, height: Layout.scaleFactorH * 72)
                         .padding(.bottom, Layout.scaleFactorH * 180)
                 }

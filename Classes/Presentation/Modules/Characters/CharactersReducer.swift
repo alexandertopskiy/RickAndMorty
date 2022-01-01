@@ -37,6 +37,7 @@ let charactersReducer: Reducer<CharactersState, CharactersAction, CharactersEnvi
                 state.logInfo = error
             }
         case .characterCardSelected(let character):
+            state.details.character = character
             print("character \(character.name) selected")
         case .searchInputChanged(let request):
             print("searching character: \(request ?? "nil")")
@@ -75,11 +76,21 @@ let charactersReducer: Reducer<CharactersState, CharactersAction, CharactersEnvi
             state.filterParameters.page = 1
             state.filterParameters.totalPages = 0
             state.filter.filterParameters = state.filterParameters
+        case .details(let character):
+            break
         }
         return .none
     },
 
     filterReducer.pullback(state: \.filter, action: /CharactersAction.filter) { _ in
         FilterEnvironment()
+    },
+
+    characterDetailsReducer.pullback(state: \.details, action: /CharactersAction.details) { _ in
+        CharacterDetailsEnvironment(
+            apiService: ServiceContainer().episodesService,
+            apiServiceLocation: ServiceContainer().locationsService,
+            mainQueue: DispatchQueue.main.eraseToAnyScheduler()
+        )
     }
 )

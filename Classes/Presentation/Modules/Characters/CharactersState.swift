@@ -12,4 +12,5 @@ struct CharactersState: Equatable {
     var filterParameters: FetchingParameters = FetchingParameters()
     var filter: FilterState = FilterState(filterType: .characters)
     var logInfo: NetworkError?
+    var details = CharacterDetailsState(character: Character())
 }

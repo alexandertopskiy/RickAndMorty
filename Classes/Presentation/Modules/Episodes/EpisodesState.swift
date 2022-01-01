@@ -13,4 +13,5 @@ struct EpisodesState: Equatable {
     var selectedSeasonIndex: Int = 0
     var seasonsTitles: [String] = []
     var logInfo: NetworkError?
+    var details: EpisodeDetailsState = EpisodeDetailsState(episode: Episode())
 }

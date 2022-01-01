@@ -24,7 +24,18 @@ struct EpisodesScrollView: View {
                         if let (_, seasonNumber) = episode.convertedEpisodeCode {
                             if seasonTitleNumber == seasonNumber {
                                 HStack(spacing: Layout.scaleFactorW * 16) {
-                                    NavigationLink(destination: DetailsHelloComponent()) {
+                                    NavigationLink {
+                                        EpisodeDetailsScreen(
+                                            store: Store(
+                                                initialState: EpisodeDetailsState(episode: episode),
+                                                reducer: episodeDetailsReducer,
+                                                environment: EpisodeDetailsEnvironment(
+                                                    apiService: ServiceContainer().charactersService,
+                                                    mainQueue: DispatchQueue.main.eraseToAnyScheduler()
+                                                )
+                                            )
+                                        )
+                                    } label: {
                                         EpisodeCard(episode: episode)
                                     }
                                 }
@@ -42,7 +53,7 @@ struct EpisodesScrollView: View {
                         }
                 }
             }
-            .padding(.horizontal, Layout.scaleFactorW * 23)
+			.padding(.horizontal, Layout.scaleFactorW * 23)
         }
     }
 }

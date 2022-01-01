@@ -15,7 +15,21 @@ struct CharactersScrollView: View {
             VStack {
                 LazyVGrid(columns: columns, spacing: Layout.scaleFactorW * 16) {
                     ForEach(viewStore.data, id: \.id) { character in
-                        CharacterCard(сharacter: character)
+                        NavigationLink {
+                            CharacterDetailsScreen(
+                                store: Store(
+                                    initialState: CharacterDetailsState(character: character),
+                                    reducer: characterDetailsReducer,
+                                    environment: CharacterDetailsEnvironment(
+                                        apiService: ServiceContainer().episodesService,
+                                        apiServiceLocation: ServiceContainer().locationsService,
+                                        mainQueue: DispatchQueue.main.eraseToAnyScheduler()
+                                    )
+                                )
+                            )
+                        } label: {
+                            CharacterCard(сharacter: character)
+                        }
                     }
                     if viewStore.filterParameters.page < viewStore.filterParameters.totalPages {
                         AnimationViewComponent()
@@ -29,7 +43,7 @@ struct CharactersScrollView: View {
                     }
                 }
             }
-            .padding(.horizontal, Layout.scaleFactorW * 23)
+            .padding(.horizontal, Layout.scaleFactorW * 24)
         }
     }
 }

@@ -15,9 +15,45 @@ struct Character: Codable, Equatable {
     let origin: CharacterLocation
     let location: CharacterLocation
     let image: String
-    let episode: [String]
+    let episodeURLs: [URL]
     let url: String
     let created: String
+    var originLocation: [Location] = []
+    var episodes: [Episode] = []
+
+    var episodesIDs: [Int] {
+        return episodeURLs.compactMap { Int($0.lastPathComponent) }
+    }
+
+    init() {
+        id = 0
+        name = ""
+        status = .unknown
+        species = .unknown
+        type = .unknown
+        gender = .unknown
+        origin = CharacterLocation()
+        location = CharacterLocation()
+        image = ""
+        episodeURLs = []
+        url = ""
+        created = ""
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case id
+        case name
+        case status
+        case species
+        case type
+        case gender
+        case origin
+        case location
+        case image
+        case episodeURLs = "episode"
+        case url
+        case created
+    }
 
     enum CharacterStatus: String, Codable, Equatable, CaseIterable {
         case alive = "Alive"
@@ -230,31 +266,28 @@ struct Character: Codable, Equatable {
 
 struct CharacterLocation: Codable, Equatable {
     let name: String
-    let url: String
+    let locationURL: URL?
+
+    var originID: [Int] {
+        guard let id = Int(locationURL?.lastPathComponent ?? "") else {
+            return []
+        }
+        return [id]
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case name
+        case locationURL = "url"
+    }
+
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        name = try container.decode(String.self, forKey: .name)
+        locationURL = try? container.decodeIfPresent(URL.self, forKey: .locationURL)
+    }
+
+    init() {
+        name = ""
+        locationURL = nil
+    }
 }
-
-let dummyCharacterModel = Character(
-    id: 1,
-    name: "Rick Sanchez",
-    status: Character.CharacterStatus.alive,
-    species: Character.CharacterSpecies.human,
-    type: Character.CharacterType.noType,
-    gender: Character.CharacterGender.male,
-    origin: CharacterLocation(
-        name: "Earth",
-        url: "https://rickandmortyapi.com/api/location/1"
-    ),
-    location: CharacterLocation(
-        name: "Earth",
-        url: "https://rickandmortyapi.com/api/location/20"
-    ),
-    image: "https://rickandmortyapi.com/api/character/avatar/1.jpeg",
-    episode: [
-        "https://rickandmortyapi.com/api/episode/1",
-        "https://rickandmortyapi.com/api/episode/2"
-    ],
-    url: "https://rickandmortyapi.com/api/character/1",
-    created: "2017-11-04T18:48:46.250Z"
-)
-
-let dummyCharactersArray: [Character] = Array(repeating: dummyCharacterModel, count: 9)

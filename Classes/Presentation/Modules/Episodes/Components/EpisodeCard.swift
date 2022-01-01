@@ -56,17 +56,6 @@ struct EpisodeCard: View {
 
 struct EpisodeCard_Previews: PreviewProvider {
     static var previews: some View {
-        VStack {
-            if !dummyEpisodesArray.isEmpty {
-                ScrollView(.vertical, showsIndicators: false) {
-                    VStack(spacing : Layout.scaleFactorW * 16) {
-                        HStack(spacing: Layout.scaleFactorW * 16) {
-                            EpisodeCard(episode: dummyEpisodesArray[0])
-                        }
-                    }
-                    .padding(.horizontal, Layout.scaleFactorW * 23)
-                }
-            }
-        }
+        EpisodeCard(episode: Episode())
     }
 }

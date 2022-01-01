@@ -12,4 +12,5 @@ struct LocationsState: Equatable {
     var filterParameters: FetchingParameters = FetchingParameters()
     var filter: FilterState = FilterState(filterType: .locations)
     var logInfo: NetworkError?
+    var details = LocationDetailsState(location: Location())
 }

@@ -54,6 +54,8 @@ struct LocationsScreen: View {
                                     .foregroundColor(.white)
                                     .kerning(-0.41)
                                     .padding(.top, Layout.scaleFactorH * 150)
+                                    .padding(.horizontal, Layout.scaleFactorW * 24)
+                                    .multilineTextAlignment(.center)
                             } else {
                                 if viewStore.data.isEmpty {
                                     AnimationViewComponent()
@@ -63,7 +65,16 @@ struct LocationsScreen: View {
                                     LazyVStack(spacing: Layout.scaleFactorW * 16) {
                                         ForEach(viewStore.state.data, id: \.id) { card in
                                             NavigationLink {
-                                                DetailsHelloComponent()
+                                                LocationDetailsScreen(
+                                                    store: Store(
+                                                        initialState: LocationDetailsState(location: card),
+                                                        reducer: locationDetailsReducer,
+                                                        environment: LocationDetailsEnvironment(
+                                                            apiService: ServiceContainer().charactersService,
+                                                            mainQueue: DispatchQueue.main.eraseToAnyScheduler()
+                                                        )
+                                                    )
+                                                )
                                             } label: {
                                                 LocationsCardComponent(locationDetail: card)
                                             }

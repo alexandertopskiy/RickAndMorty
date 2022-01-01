@@ -46,6 +46,6 @@ struct LocationsCardComponent: View {
 
 struct LocationsCardComponent_Previews: PreviewProvider {
     static var previews: some View {
-        LocationsCardComponent(locationDetail: locationCardModel)
+        LocationsCardComponent(locationDetail: Location())
     }
 }

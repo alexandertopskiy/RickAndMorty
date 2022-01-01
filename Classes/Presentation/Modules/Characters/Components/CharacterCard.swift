@@ -44,6 +44,6 @@ struct CharacterCard: View {
 
 struct CharacterCard_Previews: PreviewProvider {
     static var previews: some View {
-        CharacterCard(сharacter: dummyCharacterModel)
+        CharacterCard(сharacter: Character())
     }
 }

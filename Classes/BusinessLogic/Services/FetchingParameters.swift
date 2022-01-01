@@ -38,7 +38,7 @@ struct FetchingParameters: Equatable {
             filter["dimension"] = "\(dimension)"
         }
         if let episode = self.episode {
-            filter["episode"] = "S0\(episode)"
+            filter["episode"] = episode / 10 == 0 ? "S0\(episode)" : "S\(episode)"
         }
         return filter
     }
