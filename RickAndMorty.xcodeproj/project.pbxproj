@@ -99,7 +99,6 @@
 		C3834B4F274BA0D90091D5CB /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = C3834B4E274BA0D90091D5CB /* Lottie */; };
 		C39B3694277F0E5900AD36F5 /* UINavigationController+UIGestureRecognizerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C39B3693277F0E5900AD36F5 /* UINavigationController+UIGestureRecognizerDelegate.swift */; };
 		C39B36962780A6ED00AD36F5 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 066238181F879B4D00AA6B14 /* Localizable.strings */; };
-		C39DC25927465DB80056C306 /* Networking in Frameworks */ = {isa = PBXBuildFile; productRef = C39DC25827465DB80056C306 /* Networking */; };
 		C39DC25C27465DC40056C306 /* Nuke in Frameworks */ = {isa = PBXBuildFile; productRef = C39DC25B27465DC40056C306 /* Nuke */; };
 		C39DC25F27465DCF0056C306 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = C39DC25E27465DCF0056C306 /* ComposableArchitecture */; };
 		C3B7CB2D2759069600A44898 /* EpisodeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B7CB2C2759069600A44898 /* EpisodeModel.swift */; };
@@ -112,6 +111,7 @@
 		C3D0641B275A34C8003E9148 /* EpisodeCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3D0641A275A34C8003E9148 /* EpisodeCard.swift */; };
 		C3D0641F275A5860003E9148 /* AppSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3D0641E275A585F003E9148 /* AppSegmentedControl.swift */; };
 		C3D08F4F2101B9B600FDC15E /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3D08F4D2101B9B500FDC15E /* Assets.swift */; };
+		C3ED99092811D8380053A69C /* Networking in Frameworks */ = {isa = PBXBuildFile; productRef = C3ED99082811D8380053A69C /* Networking */; };
 		C4CF98403AF3388D9071EE84 /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81EB3DB1D9FCAECB1BA57956 /* SplashScreen.swift */; };
 		C5C57802B327ACF6B57BDD00 /* EpisodesEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCD27C071AF8A31130D3FED /* EpisodesEnvironment.swift */; };
 		C9AE9C6699DE4AA3BEBF08E7 /* LocationsState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB95A00894FF5C01506B6FD /* LocationsState.swift */; };
@@ -251,9 +251,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C39DC25927465DB80056C306 /* Networking in Frameworks */,
 				C39DC25C27465DC40056C306 /* Nuke in Frameworks */,
 				C39DC25F27465DCF0056C306 /* ComposableArchitecture in Frameworks */,
+				C3ED99092811D8380053A69C /* Networking in Frameworks */,
 				C3834B4F274BA0D90091D5CB /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -738,10 +738,10 @@
 			);
 			name = RickAndMorty;
 			packageProductDependencies = (
-				C39DC25827465DB80056C306 /* Networking */,
 				C39DC25B27465DC40056C306 /* Nuke */,
 				C39DC25E27465DCF0056C306 /* ComposableArchitecture */,
 				C3834B4E274BA0D90091D5CB /* Lottie */,
+				C3ED99082811D8380053A69C /* Networking */,
 			);
 			productName = RickAndMorty;
 			productReference = 060F08441E4D6B3900D9166F /* RickAndMorty.app */;
@@ -776,10 +776,10 @@
 			);
 			mainGroup = 060F083B1E4D6B3900D9166F;
 			packageReferences = (
-				C39DC25727465DB80056C306 /* XCRemoteSwiftPackageReference "networking" */,
 				C39DC25A27465DC40056C306 /* XCRemoteSwiftPackageReference "Nuke" */,
 				C39DC25D27465DCF0056C306 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
 				C3834B4D274BA0D90091D5CB /* XCRemoteSwiftPackageReference "lottie-ios" */,
+				C3ED99072811D8380053A69C /* XCRemoteSwiftPackageReference "swift-networking" */,
 			);
 			productRefGroup = 060F08451E4D6B3900D9166F /* Products */;
 			projectDirPath = "";
@@ -1655,14 +1655,6 @@
 				minimumVersion = 3.2.3;
 			};
 		};
-		C39DC25727465DB80056C306 /* XCRemoteSwiftPackageReference "networking" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://projects.ronasit.com/ronas-it/ios/networking";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 2.1.0;
-			};
-		};
 		C39DC25A27465DC40056C306 /* XCRemoteSwiftPackageReference "Nuke" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/kean/Nuke.git";
@@ -1679,6 +1671,14 @@
 				minimumVersion = 0.28.1;
 			};
 		};
+		C3ED99072811D8380053A69C /* XCRemoteSwiftPackageReference "swift-networking" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/RonasIT/swift-networking";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1686,11 +1686,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = C3834B4D274BA0D90091D5CB /* XCRemoteSwiftPackageReference "lottie-ios" */;
 			productName = Lottie;
-		};
-		C39DC25827465DB80056C306 /* Networking */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = C39DC25727465DB80056C306 /* XCRemoteSwiftPackageReference "networking" */;
-			productName = Networking;
 		};
 		C39DC25B27465DC40056C306 /* Nuke */ = {
 			isa = XCSwiftPackageProductDependency;
@@ -1701,6 +1696,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = C39DC25D27465DCF0056C306 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */;
 			productName = ComposableArchitecture;
+		};
+		C3ED99082811D8380053A69C /* Networking */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C3ED99072811D8380053A69C /* XCRemoteSwiftPackageReference "swift-networking" */;
+			productName = Networking;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
