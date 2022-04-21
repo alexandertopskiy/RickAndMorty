@@ -25,22 +25,15 @@ let charactersReducer: Reducer<CharactersState, CharactersAction, CharactersEnvi
         case .dataLoaded(let result):
             switch result {
             case .success(let characters):
-                characters.results.forEach { character in
-                    print("id #\(character.id), \(character.name) (with gender \(character.gender))")
-                }
                 state.filterParameters.totalPages = characters.info.pages
                 state.data += characters.results
                 state.logInfo = nil
-                print("number of characters: \(state.data.count)")
             case .failure(let error):
-                print(error.localizedDescription)
                 state.logInfo = error
             }
         case .characterCardSelected(let character):
             state.details.character = character
-            print("character \(character.name) selected")
         case .searchInputChanged(let request):
-            print("searching character: \(request ?? "nil")")
             state.filterParameters.name = request
             state.filterParameters.page = 1
             state.filterParameters.totalPages = 0

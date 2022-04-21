@@ -18,7 +18,6 @@ let locationDetailsReducer = Reducer<LocationDetailsState, LocationDetailsAction
         switch result {
         case .success(let residents):
             state.location.residents += residents
-            print("number of residents: \(state.location.residents.count)")
         case .failure(let error):
             print(error.localizedDescription)
         }

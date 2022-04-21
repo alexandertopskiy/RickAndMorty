@@ -18,7 +18,6 @@ let episodeDetailsReducer = Reducer<EpisodeDetailsState, EpisodeDetailsAction, E
         switch result {
         case .success(let characters):
             state.episode.characters += characters
-            print("number of characters: \(state.episode.characters.count)")
         case .failure(let error):
             print(error.localizedDescription)
         }

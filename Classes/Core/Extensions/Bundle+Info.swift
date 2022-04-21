@@ -6,25 +6,38 @@
 import Foundation
 
 extension Bundle {
-    // swiftlint:disable force_cast
-    var appIdentifier: String {
-        return infoDictionary![kCFBundleIdentifierKey as String] as! String
+    var appIdentifier: String? {
+        guard let identifier = infoDictionary?[kCFBundleIdentifierKey as String] as? String else {
+            return nil
+        }
+        return identifier
     }
 
-    var appName: String {
-        return infoDictionary![kCFBundleNameKey as String] as! String
+    var appName: String? {
+        guard let name = infoDictionary?[kCFBundleNameKey as String] as? String else {
+            return nil
+        }
+        return name
     }
 
-    var appDisplayName: String {
-        return infoDictionary!["CFBundleDisplayName" as String] as! String
+    var appDisplayName: String? {
+        guard let displayName = infoDictionary?["CFBundleDisplayName" as String] as? String else {
+            return nil
+        }
+        return displayName
     }
 
-    var appVersion: String {
-        return infoDictionary!["CFBundleShortVersionString" as String] as! String
+    var appVersion: String? {
+        guard let version = infoDictionary?["CFBundleShortVersionString" as String] as? String else {
+            return nil
+        }
+        return version
     }
 
-    var bundleVersion: String {
-        return infoDictionary!["CFBundleVersion" as String] as! String
+    var bundleVersion: String? {
+        guard let version = infoDictionary?["CFBundleVersion" as String] as? String else {
+            return nil
+        }
+        return version
     }
-    // swiftlint:enable force_cast
 }

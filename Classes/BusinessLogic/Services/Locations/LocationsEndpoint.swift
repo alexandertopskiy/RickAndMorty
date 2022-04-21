@@ -6,14 +6,12 @@
 import Foundation
 import Networking
 
-enum LocationsEndpoint: Endpoint {
+enum LocationsEndpoint {
     case fetchLocations(FetchingParameters)
     case fetchMultipleLocations([Int])
+}
 
-    var baseURL: URL {
-        return AppConfiguration.serverURL
-    }
-
+extension LocationsEndpoint: Endpoint {
     var path: String {
         switch self {
         case .fetchLocations:
@@ -28,7 +26,7 @@ enum LocationsEndpoint: Endpoint {
     }
 
     var headers: [RequestHeader] {
-        return [RequestHeaders.contentType("application/json")]
+        return [RequestHeaders.contentJson]
     }
 
     var parameters: Parameters? {
@@ -38,12 +36,6 @@ enum LocationsEndpoint: Endpoint {
         default:
             return nil
         }
-    }
-}
-
-extension LocationsEndpoint {
-    var parameterEncoding: ParameterEncoding {
-        return URLEncoding.default
     }
 
     var authorizationType: AuthorizationType {

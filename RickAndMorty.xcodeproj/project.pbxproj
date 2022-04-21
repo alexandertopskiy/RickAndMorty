@@ -111,6 +111,8 @@
 		C3D0641B275A34C8003E9148 /* EpisodeCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3D0641A275A34C8003E9148 /* EpisodeCard.swift */; };
 		C3D0641F275A5860003E9148 /* AppSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3D0641E275A585F003E9148 /* AppSegmentedControl.swift */; };
 		C3D08F4F2101B9B600FDC15E /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3D08F4D2101B9B500FDC15E /* Assets.swift */; };
+		C3ECC63B2811E36400A3909F /* Endpoint+App.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3ECC63A2811E36400A3909F /* Endpoint+App.swift */; };
+		C3ECC63D2811E37A00A3909F /* RequestHeaders+App.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3ECC63C2811E37A00A3909F /* RequestHeaders+App.swift */; };
 		C3ED99092811D8380053A69C /* Networking in Frameworks */ = {isa = PBXBuildFile; productRef = C3ED99082811D8380053A69C /* Networking */; };
 		C4CF98403AF3388D9071EE84 /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81EB3DB1D9FCAECB1BA57956 /* SplashScreen.swift */; };
 		C5C57802B327ACF6B57BDD00 /* EpisodesEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCD27C071AF8A31130D3FED /* EpisodesEnvironment.swift */; };
@@ -232,6 +234,8 @@
 		C3D0641A275A34C8003E9148 /* EpisodeCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeCard.swift; sourceTree = "<group>"; };
 		C3D0641E275A585F003E9148 /* AppSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSegmentedControl.swift; sourceTree = "<group>"; };
 		C3D08F4D2101B9B500FDC15E /* Assets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Assets.swift; sourceTree = "<group>"; };
+		C3ECC63A2811E36400A3909F /* Endpoint+App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Endpoint+App.swift"; sourceTree = "<group>"; };
+		C3ECC63C2811E37A00A3909F /* RequestHeaders+App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RequestHeaders+App.swift"; sourceTree = "<group>"; };
 		C78666022321AEFC7146AA0A /* SplashAction.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SplashAction.swift; sourceTree = "<group>"; };
 		C7D566318C499CEE8616B3FE /* EpisodeDetailsAction.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = EpisodeDetailsAction.swift; sourceTree = "<group>"; };
 		D10EA427E6ABAAA5A4F897AA /* LocationDetailsReducer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = LocationDetailsReducer.swift; sourceTree = "<group>"; };
@@ -368,9 +372,9 @@
 		060F08761E4D6CDF00D9166F /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				C38028A0275D270A00E470BC /* GeneralRequest.swift */,
 				C314B95F2750EE5700C7E28F /* CharacterModel.swift */,
 				1148D5D72753A69E0047E20E /* LocationsModel.swift */,
-				C38028A0275D270A00E470BC /* GeneralRequest.swift */,
 				C3B7CB2C2759069600A44898 /* EpisodeModel.swift */,
 			);
 			path = Models;
@@ -494,6 +498,7 @@
 		6D35B598216B5E3A00C72B29 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				C3ECC6392811E35200A3909F /* Networking */,
 				6D35B599216B646F00C72B29 /* Bundle+Info.swift */,
 				C3540F78276B51A6002C2E3E /* View+CustomPlaceholder.swift */,
 				C3540F76276B5165002C2E3E /* View+DismissKeyboard.swift */,
@@ -639,6 +644,15 @@
 			path = Locations;
 			sourceTree = "<group>";
 		};
+		C3ECC6392811E35200A3909F /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				C3ECC63A2811E36400A3909F /* Endpoint+App.swift */,
+				C3ECC63C2811E37A00A3909F /* RequestHeaders+App.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
 		D276A31F75B5CC8F7EB4FE05 /* Episodes */ = {
 			isa = PBXGroup;
 			children = (
@@ -754,7 +768,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0820;
-				LastUpgradeCheck = 1000;
+				LastUpgradeCheck = 1330;
 				ORGANIZATIONNAME = "Ronas IT";
 				TargetAttributes = {
 					060F08431E4D6B3900D9166F = {
@@ -766,10 +780,9 @@
 			};
 			buildConfigurationList = 060F083F1E4D6B3900D9166F /* Build configuration list for PBXProject "RickAndMorty" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				English,
 				en,
 				Base,
 				ru,
@@ -867,6 +880,7 @@
 				11D3F7A22766445C00444192 /* EpisodeDetailsInfoView.swift in Sources */,
 				11D3F79C2765F6A400444192 /* LocationDetailsHeaderView.swift in Sources */,
 				C3834B4C274BA0A10091D5CB /* AnimationViewComponent.swift in Sources */,
+				C3ECC63D2811E37A00A3909F /* RequestHeaders+App.swift in Sources */,
 				C4CF98403AF3388D9071EE84 /* SplashScreen.swift in Sources */,
 				96851AE03DC39C8E37DBD4DB /* SplashState.swift in Sources */,
 				BBDAAEBD960BB8B03FE8E97A /* SplashAction.swift in Sources */,
@@ -917,6 +931,7 @@
 				11A839F7275A51C50015BD55 /* NavigationImageComponent.swift in Sources */,
 				C3CC729E2752B9F9007FFC54 /* SearchAndFilter.swift in Sources */,
 				1148D5D82753A69E0047E20E /* LocationsModel.swift in Sources */,
+				C3ECC63B2811E36400A3909F /* Endpoint+App.swift in Sources */,
 				C37763BD2765014C008308B9 /* EpisodesEndpoint.swift in Sources */,
 				C37763CD27675743008308B9 /* FilterValue.swift in Sources */,
 				11D3F7922765EECB00444192 /* CharacterDetailsHeaderView.swift in Sources */,
@@ -972,6 +987,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -992,6 +1008,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -1030,6 +1047,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -1050,6 +1068,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -1136,6 +1155,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -1156,6 +1176,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -1221,6 +1242,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -1241,6 +1263,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -1306,6 +1329,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -1326,6 +1350,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -1383,6 +1408,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -1403,6 +1429,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -1460,6 +1487,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -1480,6 +1508,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -1536,6 +1565,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -1556,6 +1586,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;

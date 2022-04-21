@@ -6,12 +6,21 @@
 import Foundation
 
 enum NetworkError: Equatable, Error {
-    var string: String { return String(reflecting: self) }
+    case unexpected(Error)
+    case decoding(Error)
+    case network(Error)
+    case statusCode(Int)
+    case nonHTTPResponse
+
+    var string: String {
+        return String(reflecting: self)
+    }
 
     var readableInfo: String {
         switch self {
         case let .statusCode(code) where code == 404:
             return L10n.Log.notFound
+
         default:
             return L10n.Log.error
         }
@@ -24,18 +33,13 @@ enum NetworkError: Equatable, Error {
         return lhs.string == rhs.string
     }
 
-    case unexpected(Error)
-    case decoding(Error)
-    case network(Error)
-    case statusCode(Int)
-    case nonHTTPResponse
-
     static func map(_ error: Error) -> NetworkError {
         switch error {
         case let decodingError as DecodingError:
             return NetworkError.decoding(decodingError)
 
-        default: return (error as? NetworkError) ?? .unexpected(error)
+        default:
+            return (error as? NetworkError) ?? .unexpected(error)
         }
     }
 }

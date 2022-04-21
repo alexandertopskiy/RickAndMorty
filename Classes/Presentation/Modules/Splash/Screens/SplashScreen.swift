@@ -10,7 +10,7 @@ struct SplashScreen: View {
     let store: Store<SplashState, SplashAction>
 
     var body: some View {
-        WithViewStore(store) { viewStore in
+        WithViewStore(store) { _ in
             ZStack {
                 Color(Asset.Colors.blackBG.color)
                     .edgesIgnoringSafeArea(.all)

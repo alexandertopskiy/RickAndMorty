@@ -12,7 +12,6 @@ func makeRequest(_ endpoint: @escaping () -> Endpoint) -> URLRequest {
     var request = URLRequest(url: endpoint().url)
     request.method = endpoint().method
     request.headers = endpoint().headers.httpHeaders
-    print("request: \(request)")
     guard let params = endpoint().parameters else {
         return request
     }
@@ -32,7 +31,6 @@ func makeRequest(_ endpoint: @escaping () -> Endpoint) -> URLRequest {
     requestWithParams.method = endpoint().method
     requestWithParams.headers = endpoint().headers.httpHeaders
     requestWithParams.cachePolicy = .reloadRevalidatingCacheData
-    print("request with parameters: \(requestWithParams)")
 
     return requestWithParams
 }

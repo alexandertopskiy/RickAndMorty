@@ -25,22 +25,15 @@ let locationsReducer: Reducer<LocationsState, LocationsAction, LocationsEnvironm
         case .dataLoaded(let result):
             switch result {
             case .success(let locations):
-                locations.results.forEach { location in
-                    print("id #\(location.id), \(location.name) (with type \(location.type.rawValue))")
-                }
                 state.filterParameters.totalPages = locations.info.pages
                 state.data += locations.results
                 state.logInfo = nil
-                print("number of locations: \(state.data.count)")
             case .failure(let error):
-                print(error.localizedDescription)
                 state.logInfo = error
             }
         case .locationCardSelected(let location):
             state.details.location = location
-            print("location \(location.name) selected")
         case .searchInputChanged(let request):
-            print("searching location: \(request ?? "nil")")
             state.filterParameters.name = request
             state.filterParameters.page = 1
             state.filterParameters.totalPages = 0

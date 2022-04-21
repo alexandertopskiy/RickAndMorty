@@ -6,14 +6,12 @@
 import Foundation
 import Networking
 
-enum CharactersEndpoint: Endpoint {
+enum CharactersEndpoint {
     case fetchCharacters(FetchingParameters)
     case fetchMultipleCharacters([Int])
+}
 
-    var baseURL: URL {
-        return AppConfiguration.serverURL
-    }
-
+extension CharactersEndpoint: Endpoint {
     var path: String {
         switch self {
         case .fetchCharacters:
@@ -28,7 +26,7 @@ enum CharactersEndpoint: Endpoint {
     }
 
     var headers: [RequestHeader] {
-        return [RequestHeaders.contentType("application/json")]
+        return [RequestHeaders.contentJson]
     }
 
     var parameters: Parameters? {
@@ -38,12 +36,6 @@ enum CharactersEndpoint: Endpoint {
         default:
             return nil
         }
-    }
-}
-
-extension CharactersEndpoint {
-    var parameterEncoding: ParameterEncoding {
-        return URLEncoding.default
     }
 
     var authorizationType: AuthorizationType {

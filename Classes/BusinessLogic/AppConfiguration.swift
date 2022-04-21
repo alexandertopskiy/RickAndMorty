@@ -12,49 +12,49 @@ enum AppConfiguration {
         static let terms = "terms/"
     }
 
-    private static let devServerURL = URL(string: "https://rickandmortyapi.com/")!
-    private static let prodServerURL = URL(string: "<#https://api.example.com/#>")!
+    private static let devServerURL = URL(string: "https://rickandmortyapi.com/")
+    private static let prodServerURL = URL(string: "<#https://api.example.com/#>")
 
     #if DEBUG_DEVELOPMENT
 
     static let serverURL = devServerURL
-    static let baseURL = devServerURL.appendingPathComponent(Paths.api)
-    static let termsURL = devServerURL.appendingPathComponent(Paths.terms)
+    static let baseURL = devServerURL?.appendingPathComponent(Paths.api)
+    static let termsURL = devServerURL?.appendingPathComponent(Paths.terms)
     static let isNotificationsSandbox = true
 
     #elseif DEBUG_PRODUCTION
 
     static let serverURL = prodServerURL
-    static let baseURL = prodServerURL.appendingPathComponent(Paths.api)
-    static let termsURL = prodServerURL.appendingPathComponent(Paths.terms)
+    static let baseURL = prodServerURL?.appendingPathComponent(Paths.api)
+    static let termsURL = prodServerURL?.appendingPathComponent(Paths.terms)
     static let isNotificationsSandbox = true
 
     #elseif ADHOC_DEVELOPMENT
 
     static let serverURL = devServerURL
-    static let baseURL = devServerURL.appendingPathComponent(Paths.api)
-    static let termsURL = devServerURL.appendingPathComponent(Paths.terms)
+    static let baseURL = devServerURL?.appendingPathComponent(Paths.api)
+    static let termsURL = devServerURL?.appendingPathComponent(Paths.terms)
     static let isNotificationsSandbox = false
 
     #elseif ADHOC
 
     static let serverURL = prodServerURL
-    static let baseURL = prodServerURL.appendingPathComponent(Paths.api)
-    static let termsURL = prodServerURL.appendingPathComponent(Paths.terms)
+    static let baseURL = prodServerURL?.appendingPathComponent(Paths.api)
+    static let termsURL = prodServerURL?.appendingPathComponent(Paths.terms)
     static let isNotificationsSandbox = false
 
     #elseif APPSTORE
 
     static let serverURL = prodServerURL
-    static let baseURL = prodServerURL.appendingPathComponent(Paths.api)
-    static let termsURL = prodServerURL.appendingPathComponent(Paths.terms)
+    static let baseURL = prodServerURL?.appendingPathComponent(Paths.api)
+    static let termsURL = prodServerURL?.appendingPathComponent(Paths.terms)
     static let isNotificationsSandbox = false
 
     #elseif ANALYZE
 
     static let serverURL = devServerURL
-    static let baseURL = devServerURL.appendingPathComponent(Paths.api)
-    static let termsURL = devServerURL.appendingPathComponent(Paths.terms)
+    static let baseURL = devServerURL?.appendingPathComponent(Paths.api)
+    static let termsURL = devServerURL?.appendingPathComponent(Paths.terms)
     static let isNotificationsSandbox = true
 
     #endif

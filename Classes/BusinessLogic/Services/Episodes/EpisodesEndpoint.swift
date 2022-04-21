@@ -6,14 +6,12 @@
 import Foundation
 import Networking
 
-enum EpisodesEndpoint: Endpoint {
+enum EpisodesEndpoint {
     case fetchEpisodes(FetchingParameters)
     case fetchMultipleEpisodes([Int])
+}
 
-    var baseURL: URL {
-        return AppConfiguration.serverURL
-    }
-
+extension EpisodesEndpoint: Endpoint {
     var path: String {
         switch self {
         case .fetchEpisodes:
@@ -28,7 +26,7 @@ enum EpisodesEndpoint: Endpoint {
     }
 
     var headers: [RequestHeader] {
-        return [RequestHeaders.contentType("application/json")]
+        return [RequestHeaders.contentJson]
     }
 
     var parameters: Parameters? {
@@ -38,12 +36,6 @@ enum EpisodesEndpoint: Endpoint {
         default:
             return nil
         }
-    }
-}
-
-extension EpisodesEndpoint {
-    var parameterEncoding: ParameterEncoding {
-        return URLEncoding.default
     }
 
     var authorizationType: AuthorizationType {

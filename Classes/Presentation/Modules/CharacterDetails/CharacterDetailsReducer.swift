@@ -23,7 +23,6 @@ let characterDetailsReducer = Reducer<CharacterDetailsState, CharacterDetailsAct
         switch result {
         case .success(let episodes):
             state.character.episodes += episodes
-            print("number of episodes: \(state.character.episodes.count)")
         case .failure(let error):
             print(error.localizedDescription)
         }
@@ -31,7 +30,6 @@ let characterDetailsReducer = Reducer<CharacterDetailsState, CharacterDetailsAct
         switch result {
         case .success(let location):
             state.character.originLocation += location
-            print("count of location: \(state.character.originLocation.count)")
         case .failure(let error):
             print(error.localizedDescription)
         }
